@@ -1,0 +1,36 @@
+<h4>Сравниваем:</h4>
+<h3>
+<mat-select [(value)]="cat">   
+  <mat-option [value]="category" *ngFor="let category of displayedColumns">{{ category }}</mat-option>
+</mat-select>
+</h3>
+<div class="cats">
+<mat-select [(value)]="idx1" >   
+  <mat-option [value]="idx" *ngFor="let h of data; let idx = index">{{ h.name }}</mat-option>
+</mat-select>
+<mat-select [(value)]="idx2" >   
+  <mat-option [value]="idx" *ngFor="let h of data; let idx = index">{{ h.name }}</mat-option>
+</mat-select>
+</div>
+<button mat-raised-button (click)="updateRank(idx1,idx2,1,cat)"> {{ data[idx1].name }} лучше </button>
+<button mat-raised-button (click)="updateRank(idx1,idx2,0.5,cat)"> равны </button>
+<button mat-raised-button (click)="updateRank(idx1,idx2,0,cat)"> {{ data[idx2].name }} лучше </button>
+<button mat-raised-button (click)="updateSort(cat)"> Пересортировать </button>
+<table mat-table [dataSource]="sortedData" class="mat-elevation-z8">
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Гипотеза </th>
+    <td mat-cell *matCellDef="let element"> {{element.name }} </td>
+  </ng-container>
+  <ng-container [matColumnDef]="column" *ngFor="let column of displayedColumns">
+    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+    <td mat-cell *matCellDef="let element"> {{ element.ranks[column] }} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnsToDisplay;"></tr>
+</table>
+
+
+<!-- Copyright 2019 Google LLC. All Rights Reserved.
+    Use of this source code is governed by an MIT-style license that
+    can be found in the LICENSE file at http://angular.io/license -->

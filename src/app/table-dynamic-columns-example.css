@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+button {
+  margin: 16px 8px;
+}
+
+.cats {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
