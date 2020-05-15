@@ -1,9 +1,13 @@
 <h4>Сравниваем:</h4>
+<div class="cath">
 <h3>
 <mat-select [(value)]="cat">   
   <mat-option [value]="category" *ngFor="let category of displayedColumns">{{ category }}</mat-option>
 </mat-select>
 </h3>
+<button mat-raised-button (click)="updateSort(cat)"> Пересортировать </button>
+<button mat-raised-button (click)="resetRanks(cat)"> Сбросить рейтинг </button>
+</div>
 <div class="cats">
 <mat-select [(value)]="idx1" >   
   <mat-option [value]="idx" *ngFor="let h of data; let idx = index">{{ h.name }}</mat-option>
@@ -15,7 +19,7 @@
 <button mat-raised-button (click)="updateRank(idx1,idx2,1,cat)"> {{ data[idx1].name }} лучше </button>
 <button mat-raised-button (click)="updateRank(idx1,idx2,0.5,cat)"> равны </button>
 <button mat-raised-button (click)="updateRank(idx1,idx2,0,cat)"> {{ data[idx2].name }} лучше </button>
-<button mat-raised-button (click)="updateSort(cat)"> Пересортировать </button>
+
 <table mat-table [dataSource]="sortedData" class="mat-elevation-z8">
   <ng-container matColumnDef="name">
     <th mat-header-cell *matHeaderCellDef> Гипотеза </th>

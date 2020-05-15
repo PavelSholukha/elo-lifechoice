@@ -11,3 +11,12 @@ button {
   flex-direction: row;
   justify-content: start;
 }
+
+.cath {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+}
+.cath h3 {
+  width: 300px;
+}

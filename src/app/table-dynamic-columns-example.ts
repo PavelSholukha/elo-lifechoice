@@ -103,6 +103,14 @@ export class TableDynamicColumnsExample {
     this.sortedData = [...this.data]
     this.sortedData.sort((a:Hypotesis, b:Hypotesis) => (b.ranks[cat] - a.ranks[cat]));
   }
+
+  resetRanks(cat: Categorie) {
+    console.log("Reseting ranks");
+    this.data.forEach((h: Hypotesis) => {
+      h.ranks[cat] = 1600;
+    })
+    this.updateSort(cat);
+  }
 }
 
 
